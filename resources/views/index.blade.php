@@ -6,7 +6,7 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header text-center">
-                    <h5>Your Listings</h5> <a href="/listings/create" class="btn btn-success btn-add">Add</a>
+                    <h5>View Listings</h5>
                 </div>
                 @if (count($listings)>0)
                 <table class="table table-striped">
@@ -19,15 +19,7 @@
                         <td colspan="8">
                             {{$listing->name}}
                         </td>
-                        <td><a href="/listings/{{$listing->id}}/edit" class="btn btn-primary">Edit</a></td>
-                        <td>
-                            <form action="/listings/{{$listing->id}}" method="POST"
-                                onsubmit="confirm('Do You Want to Remove this!!');">
-                                @csrf
-                                {{method_field('DELETE')}}
-                                <button type="submit" class="btn btn-danger delete-btn">Delete</button>
-                            </form>
-                        </td>
+                        <td><a href="/listings/{{$listing->id}}" class="btn btn-primary">View</a></td>
                         @endforeach
 
                 </table>

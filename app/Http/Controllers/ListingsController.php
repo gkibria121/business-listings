@@ -12,6 +12,12 @@ class ListingsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('auth',[
+            'except' => ['index','show']
+        ]);
+    }
     public function index()
     {
         $listings = Listing::all();
@@ -61,8 +67,9 @@ class ListingsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {
-        return 'show';
+    {   $listing =Listing::find($id);
+
+        return view('show')->with('listing',$listing);
     }
 
     /**
